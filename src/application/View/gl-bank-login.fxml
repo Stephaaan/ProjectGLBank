@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.LoginScreenController">
+   <children>
+      <ImageView fitHeight="768.0" fitWidth="1373.0" layoutX="-3.0">
+         <image>
+            <Image url="@Assets/Fotolia_121724298_M_-Online-Banking-1200x800.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="-3.0" prefHeight="768.0" prefWidth="368.0" style="-fx-background-color: rgba(0,0,0,0.7);">
+         <children>
+            <Label layoutX="127.0" layoutY="201.0" text="Username" textFill="#eeeeee">
+               <font>
+                  <Font name="Segoe UI Emoji" size="26.0" />
+               </font>
+            </Label>
+            <TextField fx:id="UsernameField" layoutX="50.0" layoutY="253.0" prefHeight="39.0" prefWidth="268.0">
+               <font>
+                  <Font name="Segoe UI" size="18.0" />
+               </font></TextField>
+            <Label layoutX="131.0" layoutY="348.0" text="Password" textFill="#eeeeee">
+               <font>
+                  <Font name="Segoe UI Emoji" size="26.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="PasswordField" layoutX="50.0" layoutY="399.0" prefHeight="39.0" prefWidth="268.0">
+               <font>
+                  <Font name="Segoe UI" size="18.0" />
+               </font></PasswordField>
+            <Button fx:id="LoginButton" layoutX="89.0" layoutY="532.0" mnemonicParsing="false" onAction="#login" prefHeight="39.0" prefWidth="190.0" style="-fx-background-color: rgba(0,0,0,0.8);" text="Login" textAlignment="CENTER" textFill="#eeeeee">
+               <font>
+                  <Font name="Segoe UI Emoji" size="22.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+               </padding>
+            </Button>
+            <ImageView fitHeight="93.0" fitWidth="295.0" layoutX="37.0" layoutY="74.0">
+               <image>
+                  <Image url="@Assets/GlobalLogic-white-logo-RGB.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="UsernameErrorField" layoutX="94.0" layoutY="302.0" prefHeight="18.0" prefWidth="180.0" textAlignment="CENTER" textFill="#b20000">
+               <font>
+                  <Font name="Segoe UI" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="PasswordErrorField" layoutX="95.0" layoutY="449.0" prefHeight="18.0" prefWidth="180.0" textAlignment="CENTER" textFill="#b20000">
+               <font>
+                  <Font name="Segoe UI" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="LoginErrorField" layoutX="90.0" layoutY="500.0" prefHeight="18.0" prefWidth="190.0" textAlignment="CENTER" textFill="#b20000">
+               <font>
+                  <Font name="Segoe UI" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

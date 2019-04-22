@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.MainScreenController">
+   <children>
+      <ImageView fitHeight="779.0" fitWidth="1447.0" layoutX="-8.0" layoutY="-5.0">
+         <image>
+            <Image url="@Assets/bank_card_money_hand_79244_3840x2400.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="-10.0" layoutY="-9.0" prefHeight="101.0" prefWidth="1389.0" style="-fx-background-color: rgba(0,0,0,0.9);">
+         <children>
+            <ImageView fitHeight="74.0" fitWidth="74.0" layoutX="849.0" layoutY="19.0">
+               <image>
+                  <Image url="@Assets/man.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="946.0" layoutY="42.0" text="Hello" textFill="#eeeeee">
+               <font>
+                  <Font name="Segoe UI" size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="EmployeeNameLabel" layoutX="1014.0" layoutY="42.0" text="\@AddUserNameHere" textFill="#eeeeee">
+               <font>
+                  <Font name="Segoe UI" size="23.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="-10.0" layoutY="-8.0" prefHeight="785.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.6);">
+         <children>
+            <ImageView fitHeight="64.0" fitWidth="200.0" layoutY="22.0">
+               <image>
+                  <Image url="@Assets/GlobalLogic-white-logo-RGB.png" />
+               </image>
+            </ImageView>
+            <ChoiceBox fx:id="UserSelectBox" layoutX="18.0" layoutY="175.0" prefHeight="25.0" prefWidth="172.0" style="-fx-background-color: #fff;" />
+            <Label layoutX="52.0" layoutY="133.0" prefHeight="24.0" prefWidth="98.0" text="Select User" textAlignment="CENTER" textFill="#eeeeee">
+               <font>
+                  <Font name="Segoe UI" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="231.0" layoutY="131.0" prefHeight="600.0" prefWidth="1097.0" style="-fx-background-color: rgba(255,255,255,0.7);" />
+   </children>
+</AnchorPane>
