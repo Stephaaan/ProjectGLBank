@@ -64,7 +64,7 @@ public class Database {
 			ResultSet rs = conn.prepareStatement(sql).executeQuery();
 			
 			while(rs.next()) {
-				list.add(new Client(rs.getString("fname"),rs.getString("lname"),rs.getString("login"),rs.getInt("id")));
+				list.add(new Client(rs.getString("fname"),rs.getString("lname"),rs.getString("login"),rs.getInt("id"), rs.getString("email")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

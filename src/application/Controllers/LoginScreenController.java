@@ -3,16 +3,20 @@ package application.Controllers;
 import java.io.IOException;
 
 import application.ApplicationState;
-import application.Main;
 import application.Database.Database;
 import application.Models.Employee;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -35,10 +39,22 @@ public class LoginScreenController {
 	@FXML
 	private Label LoginErrorField;
 	
+	@FXML	
+	private ProgressIndicator LoadingCircle;
 	
+	@FXML
+	public void initialize() {
+		LoadingCircle.setVisible(false);
+	}
+
 	
 	@FXML
 	private void login() {
+		LoginButton.setDisable(true);
+		LoadingCircle.setVisible(true);
+		while(!LoadingCircle.isVisible()) {
+			System.out.println("waiting for a retarded circle");
+		}
 		//reset error fields
 		UsernameErrorField.setText("");
 		PasswordErrorField.setText("");
@@ -58,28 +74,74 @@ public class LoginScreenController {
 		if(!toLogin) {
 			return;
 		}
-		//TODO: check in db
-		Database db = Database.getInstance();
+
+		Runnable task = getTask();
+		Thread checkOnBackground = new Thread(task);
+		checkOnBackground.setDaemon(true);
+		checkOnBackground.start();
+	
 		
-		Employee employee = db.EmployeeLogin(UsernameField.getText(), PasswordField.getText());
-		if(employee == null) {
-			LoginErrorField.setText("Username or password wrong");
-		}else {
-			ApplicationState.loggedEmployee = employee;
-			try {
-				Stage mainStage = new Stage();
-				mainStage.setTitle("GL Bank");
-				Parent root = FXMLLoader.load(getClass().getResource("../View/main_window.fxml"));
-				Scene scene = new Scene(root, 1366, 768);
-				mainStage.setScene(scene);
-				((Stage) UsernameField.getScene().getWindow()).close();
-				mainStage.show();
+		
+	}
+	//task that executes login
+	private Runnable getTask() {
+		return new Runnable() {
+			Employee employee = null;
+			@Override
+			public void run() {
+				Database db = Database.getInstance();
+				try {
+					employee = db.EmployeeLogin(UsernameField.getText(), PasswordField.getText());
+					if(employee == null) {
+						Platform.runLater(new Runnable() {
+
+							@Override
+							public void run() {
+								// TODO Auto-generated method stub
+								LoginErrorField.setText("Username or password wrong");
+								LoginButton.setDisable(false);
+								LoadingCircle.setVisible(false);
+							}
+						});
+					}else {
+						ApplicationState.loggedEmployee = employee;
+						Platform.runLater(new Runnable() {
+							@Override
+							public void run() {
+								// TODO Auto-generated method stub
+								Stage mainStage = new Stage();
+								mainStage.setTitle("GL Bank");
+								Parent root;
+								try {
+									root = FXMLLoader.load(getClass().getResource("../View/main_window.fxml"));
+									Scene scene = new Scene(root, 1366, 768);
+									mainStage.setScene(scene);
+									((Stage) UsernameField.getScene().getWindow()).close();
+									mainStage.show();
+								} catch (IOException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+							}
+							
+						});
+					}
+				}catch(Exception ex) {
+					Platform.runLater(new Runnable() {
+						@Override
+						public void run() {
+							LoadingCircle.setVisible(false);
+							Alert error = new Alert(AlertType.ERROR, "Error while connecting to the database. Check if server's running...", ButtonType.CLOSE);
+							error.setTitle(ex.getMessage());
+							error.showAndWait();
+							((Stage) UsernameField.getScene().getWindow()).close();
+						}
+						
+					});
+					
+				}
 				
-				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
-		}
+		};
 	}
 }

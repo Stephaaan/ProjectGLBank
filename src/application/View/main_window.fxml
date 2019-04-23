@@ -45,8 +45,34 @@
                   <Font name="Segoe UI" size="20.0" />
                </font>
             </Label>
+            <Button layoutX="26.0" layoutY="249.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: rgba(0,0,0,0.8);;" text="Create new user" textFill="#eeeeee">
+               <font>
+                  <Font name="Segoe UI" size="15.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="231.0" layoutY="131.0" prefHeight="600.0" prefWidth="1097.0" style="-fx-background-color: rgba(255,255,255,0.7);" />
+      <AnchorPane layoutX="231.0" layoutY="131.0" prefHeight="600.0" prefWidth="1097.0" style="-fx-background-color: rgba(255,255,255,0.7);">
+         <children>
+            <Label fx:id="clientName" layoutX="14.0" layoutY="14.0" text="Štefan Rothmajer">
+               <font>
+                  <Font name="Segoe UI Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="clientEmail" layoutX="14.0" layoutY="53.0" text="stefan.rothmajer@akademiasovy.sk">
+               <font>
+                  <Font name="Segoe UI" size="13.0" />
+               </font></Label>
+            <Label layoutX="432.0" layoutY="14.0" text="ID: ">
+               <font>
+                  <Font name="Segoe UI Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="clientId" layoutX="476.0" layoutY="14.0" text="1">
+               <font>
+                  <Font name="Segoe UI Bold" size="27.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
    </children>
 </AnchorPane>
