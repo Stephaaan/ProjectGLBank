@@ -42,6 +42,12 @@ public class MainScreenController {
 	Label time;
 	
 	@FXML
+	
+	private void logout () {
+		System.exit(0);
+	}
+	
+	@FXML
 	private void createNewUser() {
 		Stage create = new Stage();
 		create.setTitle("GL Bank");
