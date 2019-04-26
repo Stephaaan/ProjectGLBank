@@ -7,14 +7,14 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.LoginScreenController">
+<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.LoginScreenController">
    <children>
-      <ImageView fitHeight="768.0" fitWidth="1373.0" layoutX="-3.0">
+      <ImageView fx:id="backgroundImageview" fitHeight="768.0" fitWidth="1366.0" layoutX="-3.0">
          <image>
             <Image url="@Assets/Fotolia_121724298_M_-Online-Banking-1200x800.jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="-3.0" prefHeight="768.0" prefWidth="368.0" style="-fx-background-color: rgba(0,0,0,0.7);">
+      <AnchorPane layoutX="-3.0" prefHeight="768.0" prefWidth="361.0" style="-fx-background-color: rgba(0,0,0,0.7);">
          <children>
             <Label layoutX="127.0" layoutY="201.0" text="Username" textFill="#eeeeee">
                <font>

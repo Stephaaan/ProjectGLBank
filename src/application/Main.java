@@ -1,5 +1,6 @@
 package application;
 	
+import application.Utils.Hash;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,7 @@ public class Main extends Application {
 			Parent root = FXMLLoader.load(getClass().getResource("View/gl-bank-login.fxml"));
 		    
 	        Scene scene = new Scene(root, 1366, 768);
-	    
+	        
 	        stage.setTitle("GL Bank");
 	        stage.setScene(scene);
 	        AppStage = stage;

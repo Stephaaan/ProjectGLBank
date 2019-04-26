@@ -18,6 +18,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class LoginScreenController {
@@ -41,6 +43,7 @@ public class LoginScreenController {
 	
 	@FXML	
 	private ProgressIndicator LoadingCircle;
+	
 	
 	@FXML
 	public void initialize() {

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.CreateNewUserController">
+   <children>
+      <ImageView fitHeight="653.0" fitWidth="987.0" layoutX="-87.0" layoutY="-9.0" preserveRatio="true">
+         <image>
+            <Image url="@Assets/money-wallpaper-hd_090607717_192.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane prefHeight="57.0" prefWidth="300.0" style="-fx-background-color: rgba(0,0,0,0.8);">
+         <children>
+            <ImageView fitHeight="57.0" fitWidth="186.0" layoutX="64.0" layoutY="6.0">
+               <image>
+                  <Image url="@Assets/GlobalLogic-white-logo-RGB.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="14.0" layoutY="73.0" prefHeight="519.0" prefWidth="273.0" style="-fx-background-color: rgba(255,255,255,0.8);;">
+         <children>
+            <TextField fx:id="fname" layoutX="13.0" layoutY="31.0" prefHeight="25.0" prefWidth="247.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <Label layoutX="14.0" layoutY="14.0" text="First name:">
+               <font>
+                  <Font name="Segoe UI Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="83.0" text="Last name:">
+               <font>
+                  <Font name="Segoe UI Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="lname" layoutX="13.0" layoutY="100.0" prefHeight="25.0" prefWidth="247.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="email" layoutX="13.0" layoutY="167.0" prefHeight="25.0" prefWidth="247.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <Label layoutX="15.0" layoutY="150.0" text="Email:">
+               <font>
+                  <Font name="Segoe UI Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="15.0" layoutY="219.0" text="E Banking login:">
+               <font>
+                  <Font name="Segoe UI Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="username" layoutX="13.0" layoutY="236.0" prefHeight="25.0" prefWidth="247.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <Label layoutX="15.0" layoutY="287.0" text="E Banking password: ">
+               <font>
+                  <Font name="Segoe UI Bold" size="13.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="password" layoutX="15.0" layoutY="304.0" onAction="#validatePassword" prefHeight="25.0" prefWidth="247.0">
+               <font>
+                  <Font name="Segoe UI" size="13.0" />
+               </font>
+            </PasswordField>
+            <Label layoutX="15.0" layoutY="352.0" text="Repeat password: ">
+               <font>
+                  <Font name="Segoe UI Bold" size="13.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="repeat_password" layoutX="15.0" layoutY="369.0" prefHeight="25.0" prefWidth="247.0">
+               <font>
+                  <Font name="Segoe UI" size="13.0" />
+               </font>
+            </PasswordField>
+            <Button layoutX="36.0" layoutY="434.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="201.0" style="-fx-background-color: rgba(0,0,0,0.8);;" text="Register" textFill="#eeeeee">
+               <font>
+                  <Font name="Segoe UI" size="15.0" />
+               </font>
+            </Button>
+            <ProgressIndicator fx:id="register_loading" layoutX="117.0" layoutY="469.0" prefHeight="36.0" prefWidth="43.0" progress="-0.17" />
+            <Label fx:id="register_error" layoutX="29.0" layoutY="480.0" text="Something went wrong while registering" textFill="#e80e0e">
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="fname_error" layoutX="22.0" layoutY="60.0" prefHeight="17.0" prefWidth="247.0" text="First name cannot have less than ? characters" textFill="#e80e0e">
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="lname_error" layoutX="22.0" layoutY="129.0" prefHeight="17.0" prefWidth="247.0" text="Last name cannot have less than ? characters" textFill="#e80e0e">
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="login_error" layoutX="22.0" layoutY="265.0" prefHeight="17.0" prefWidth="247.0" text="Login cannot have less than ? characters" textFill="#e80e0e">
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="email_error" layoutX="86.0" layoutY="196.0" text="Invalid email format" textFill="#e80e0e">
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="password_repeat_error" layoutX="84.0" layoutY="396.0" text="Password's dont match" textFill="#e80e0e">
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+            </Label>
+            <Pane fx:id="password_error_first" layoutX="15.0" layoutY="337.0" prefHeight="9.0" prefWidth="74.0" style="-fx-background-color: rgb(0,0,0,0.2);;" />
+            <Pane fx:id="password_error_second" layoutX="102.0" layoutY="337.0" prefHeight="9.0" prefWidth="74.0" style="-fx-background-color: rgba(0,0,0,0.2);" />
+            <Pane fx:id="password_error_third" layoutX="186.0" layoutY="337.0" prefHeight="9.0" prefWidth="74.0" style="-fx-background-color: rgba(0,0,0,0.2);" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
