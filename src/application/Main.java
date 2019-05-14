@@ -1,5 +1,6 @@
 package application;
 	
+import application.Database.Database;
 import application.Utils.Hash;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

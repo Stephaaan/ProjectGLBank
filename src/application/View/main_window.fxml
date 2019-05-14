@@ -67,7 +67,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="231.0" layoutY="131.0" prefHeight="600.0" prefWidth="1097.0" style="-fx-background-color: rgba(255,255,255,0.7);">
+      <AnchorPane layoutX="230.0" layoutY="131.0" prefHeight="600.0" prefWidth="1097.0" style="-fx-background-color: rgba(255,255,255,0.7);">
          <children>
             <Label fx:id="clientName" layoutX="14.0" layoutY="14.0" text="Štefan Rothmajer">
                <font>
@@ -88,6 +88,173 @@
                   <Font name="Segoe UI Bold" size="27.0" />
                </font>
             </Label>
+            <AnchorPane layoutX="290.0" layoutY="107.0" prefHeight="366.0" prefWidth="237.0" style="-fx-background-color: rgba(0,0,0,0.5);">
+               <children>
+                  <Button layoutX="36.0" layoutY="263.0" mnemonicParsing="false" onAction="#resetPassword" prefHeight="29.0" prefWidth="165.0" style="-fx-background-color: rgba(0,0,0,0.8);;" text="Reset password" textFill="#eeeeee">
+                     <font>
+                        <Font name="Segoe UI" size="15.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="clientName11" layoutX="12.0" layoutY="14.0" text="Internet Banking" textFill="#e9e9e9">
+                     <font>
+                        <Font name="Segoe UI Bold" size="27.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="clientName143" layoutX="13.0" layoutY="127.0" text="Login:" textFill="#e9e9e9">
+                     <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="ib_login" layoutX="27.0" layoutY="146.0" textFill="#e9e9e9">
+                     <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="clientName1432" layoutX="13.0" layoutY="165.0" text="Status:" textFill="#e9e9e9">
+                     <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="ib_status" layoutX="27.0" layoutY="184.0" textFill="#da1111">
+                     <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="119.0" layoutY="179.0" mnemonicParsing="false" onAction="#createNewUser" prefHeight="29.0" prefWidth="98.0" style="-fx-background-color: rgba(0,0,0,0.8);;" text="Unblock" textFill="#eeeeee">
+                     <font>
+                        <Font name="Segoe UI" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="565.0" layoutY="107.0" prefHeight="366.0" prefWidth="237.0" style="-fx-background-color: rgba(0,0,0,0.5);">
+               <children>
+                  <Button layoutX="14.0" layoutY="264.0" mnemonicParsing="false" onAction="#createNewUser" prefHeight="29.0" prefWidth="104.0" style="-fx-background-color: rgba(0,0,0,0.8);;" text="Change PIN" textFill="#eeeeee">
+                     <font>
+                        <Font name="Segoe UI" size="15.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="clientName12" layoutX="83.0" layoutY="14.0" text="Cards" textFill="#e9e9e9">
+                     <font>
+                        <Font name="Segoe UI Bold" size="27.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="clientName144" layoutX="14.0" layoutY="68.0" prefHeight="19.0" prefWidth="74.0" text="Account:" textFill="#e9e9e9">
+                     <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="clientName1441" layoutX="14.0" layoutY="128.0" prefHeight="19.0" prefWidth="74.0" text="Card:" textFill="#e9e9e9">
+                     <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="clientName14322" layoutX="25.0" layoutY="195.0" text="Status:" textFill="#e9e9e9">
+                     <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="card_status" layoutX="14.0" layoutY="220.0" textFill="#da1111">
+                     <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="clientName143221" layoutX="149.0" layoutY="195.0" text="Expiry" textFill="#e9e9e9">
+                     <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="card_expiry" layoutX="149.0" layoutY="220.0" textFill="#e9e9e9">
+                     <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="cards_deactivate" layoutX="123.0" layoutY="264.0" mnemonicParsing="false" onAction="#updateState" prefHeight="29.0" prefWidth="104.0" style="-fx-background-color: rgba(0,0,0,0.8);;" text="Deactivate" textFill="#eeeeee">
+                     <font>
+                        <Font name="Segoe UI" size="15.0" />
+                     </font>
+                  </Button>
+                  <ChoiceBox fx:id="card_accounts" layoutX="21.0" layoutY="87.0" prefHeight="25.0" prefWidth="203.0" />
+                  <ChoiceBox fx:id="card_cards" layoutX="21.0" layoutY="147.0" prefHeight="25.0" prefWidth="203.0" />
+                  <Button layoutX="14.0" layoutY="299.0" mnemonicParsing="false" onAction="#createNewCard" prefHeight="29.0" prefWidth="214.0" style="-fx-background-color: rgba(0,0,0,0.8);;" text="Create new card" textFill="#eeeeee">
+                     <font>
+                        <Font name="Segoe UI" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="840.0" layoutY="107.0" prefHeight="366.0" prefWidth="237.0" style="-fx-background-color: rgba(0,0,0,0.5);">
+               <children>
+                  <Label fx:id="clientName13" layoutX="39.0" layoutY="14.0" text="Transactions" textFill="#e9e9e9">
+                     <font>
+                        <Font name="Segoe UI Bold" size="27.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="clientName1442" layoutX="15.0" layoutY="67.0" prefHeight="19.0" prefWidth="74.0" text="Account:" textFill="#e9e9e9">
+                     <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="transaction_deposit" layoutX="36.0" layoutY="155.0" prefHeight="25.0" prefWidth="74.0" />
+                  <Label fx:id="clientName14421" layoutX="15.0" layoutY="127.0" prefHeight="19.0" prefWidth="74.0" text="Deposit:" textFill="#e9e9e9">
+                     <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="119.0" layoutY="153.0" mnemonicParsing="false" onAction="#deposit" prefHeight="29.0" prefWidth="98.0" style="-fx-background-color: rgba(0,0,0,0.8);;" text="Send" textFill="#eeeeee">
+                     <font>
+                        <Font name="Segoe UI" size="15.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="clientName144211" layoutX="15.0" layoutY="190.0" prefHeight="19.0" prefWidth="90.0" text="Widthraw:" textFill="#e9e9e9">
+                     <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="transaction_widthraw" layoutX="36.0" layoutY="209.0" prefHeight="25.0" prefWidth="74.0" />
+                  <Button layoutX="119.0" layoutY="207.0" mnemonicParsing="false" onAction="#widthraw" prefHeight="29.0" prefWidth="98.0" style="-fx-background-color: rgba(0,0,0,0.8);;" text="Send" textFill="#eeeeee">
+                     <font>
+                        <Font name="Segoe UI" size="15.0" />
+                     </font>
+                  </Button>
+                  <ChoiceBox fx:id="transaction_accounts" layoutX="19.0" layoutY="86.0" prefHeight="25.0" prefWidth="203.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="28.0" layoutY="107.0" prefHeight="366.0" prefWidth="237.0" style="-fx-background-color: rgba(0,0,0,0.5);">
+               <children>
+                  <Button layoutX="36.0" layoutY="263.0" mnemonicParsing="false" onAction="#createNewAccount" prefHeight="29.0" prefWidth="165.0" style="-fx-background-color: rgba(0,0,0,0.8);;" text="New account" textFill="#eeeeee">
+                     <font>
+                        <Font name="Segoe UI" size="15.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="clientName1" layoutX="60.0" layoutY="14.0" text="Accounts" textFill="#e9e9e9">
+                     <font>
+                        <Font name="Segoe UI Bold" size="27.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="clientName14" layoutX="14.0" layoutY="124.0" text="Number:" textFill="#e9e9e9">
+                     <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="account_accountnumber" layoutX="27.0" layoutY="143.0" textFill="#e9e9e9">
+                     <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="clientName142" layoutX="14.0" layoutY="162.0" text="Amount:" textFill="#e9e9e9">
+                     <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="account_amount" layoutX="27.0" layoutY="188.0" textFill="#e9e9e9">
+                     <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="accounts_accounts" layoutX="18.0" layoutY="64.0" prefHeight="25.0" prefWidth="203.0" />
+               </children>
+            </AnchorPane>
          </children></AnchorPane>
    </children>
 </AnchorPane>

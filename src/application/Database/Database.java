@@ -9,9 +9,11 @@ import java.sql.Statement;
 import java.util.LinkedList;
 
 import application.Globals;
+import application.Tools;
+import application.Models.Account;
+import application.Models.Card;
 import application.Models.Client;
 import application.Models.Employee;
-import application.Utils.Hash;
 
 public class Database {
 	private Database() {};
@@ -42,7 +44,7 @@ public class Database {
 		try(Connection conn = getConnection()){
 			PreparedStatement s = conn.prepareStatement(sql);
 			s.setString(1, login);
-			s.setString(2, password);
+			s.setString(2, Tools.getSHA(password));
 			
 			 ResultSet rs = s.executeQuery();
 
@@ -76,7 +78,7 @@ public class Database {
 				int id = rs.getInt(1);
 				s = conn.prepareStatement(sql2, Statement.RETURN_GENERATED_KEYS);
 				s.setString(1, c.getLogin());
-				s.setString(2, Hash.hash(password));
+				s.setString(2, Tools.getSHA(password));
 				s.setInt(3, id);
 				s.executeUpdate();
 			}
@@ -99,5 +101,192 @@ public class Database {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	public LinkedList<Account> getAllAccountsOfClient(int id){
+		String sql = "Select * from account where IDClient = ?";
+		LinkedList<Account> accounts = new LinkedList<Account>();
+		
+		try(Connection conn = getConnection()){
+			PreparedStatement s = conn.prepareStatement(sql);
+			s.setInt(1, id);
+			ResultSet rs = s.executeQuery();
+			while(rs.next()) {
+				accounts.add(new Account(rs.getInt("ID"), rs.getString("accNum"), rs.getFloat("money"), rs.getInt("IDClient")));
+			}
+			return accounts;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return null;
+		
+	}
+	public float getAmountOfAccount(String accNum) {
+		String sql = "Select money from account where accNum like ?";
+		try(Connection conn = getConnection()){
+			PreparedStatement s = conn.prepareStatement(sql);
+			s.setString(1, accNum);
+			ResultSet rs = s.executeQuery();
+			while(rs.next()) {
+				return rs.getFloat("money");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0.0f;
+	}
+	public void widthraw(float amount, String accountNumber) {
+		float a = getAmountOfAccount(accountNumber);
+		String sql = "Update account set money = ? where accNum like ?";
+		
+		try(Connection conn = getConnection()){
+			PreparedStatement s = conn.prepareStatement(sql);
+			s.setFloat(1, a-amount);
+			s.setString(2, accountNumber);
+			s.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void deposit(float amount, String accountNumber) {
+		float a = getAmountOfAccount(accountNumber);
+		String sql = "Update account set money = ? where accNum like ?";
+		
+		try(Connection conn = getConnection()){
+			PreparedStatement s = conn.prepareStatement(sql);
+			s.setFloat(1, a+amount);
+			s.setString(2, accountNumber);
+			s.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	public void updatePassword(int userID, String password) {
+		String sql = "Update loginClient set password = ? where idclient = ?";
+		try(Connection conn = getConnection()){
+			PreparedStatement s = conn.prepareStatement(sql);
+			s.setString(1, Tools.getSHA(password));
+			s.setInt(2, userID);
+			s.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	public LinkedList<Card> getCardsOfAccount(String accountNUmber){
+		LinkedList<Card> list = new LinkedList<Card>();
+		
+		String sql = "Select * from card inner join account on card.idaccount = account.id where account.accNum like ?";
+		
+		try(Connection conn = getConnection()){
+			PreparedStatement s = conn.prepareStatement(sql);
+			s.setString(1, accountNUmber);
+			ResultSet rs = s.executeQuery();
+			while(rs.next()) {
+				list.add(new Card(rs.getInt("id"), rs.getString("PIN"), rs.getBoolean("active"), rs.getInt("expireY"), rs.getInt("expireM"), rs.getInt("IDAccount")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public Card getCardInfo(int id) {
+		String sql = "Select * from card where id = ?";
+		
+		try(Connection conn = getConnection()){
+			PreparedStatement s = conn.prepareStatement(sql);
+			s.setInt(1, id);
+			ResultSet rs = s.executeQuery();
+			while(rs.next()) {
+				return new Card(rs.getInt("id"), rs.getString("PIN"), rs.getBoolean("active"), rs.getInt("expireY"), rs.getInt("expireM"), rs.getInt("IDAccount"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void setCardState(boolean state, int id) {
+		String sql = "Update card set active = ? where id = ?";
+		try(Connection conn = getConnection()){
+			PreparedStatement s = conn.prepareStatement(sql);
+			s.setBoolean(1, state);
+			s.setInt(2, id);
+			s.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public int getAccountIdByAccountNumber(String accountNumber) {
+		String sql = "select id from account where accnum like ?";
+		try(Connection conn = getConnection()){
+			PreparedStatement s = conn.prepareStatement(sql);
+			s.setString(1, accountNumber);
+			ResultSet rs = s.executeQuery();
+			while(rs.next()) {
+				return rs.getInt("id");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	public void createCard(int idAccount, String pin, String expireDate) {
+		String sql = "Insert into card(pin, active, expirey, expirem, idaccount) values (?, true, ?, ?, ?)";
+		try(Connection conn = getConnection()){
+			PreparedStatement s = conn.prepareStatement(sql);
+			s.setString(1, pin);
+			s.setInt(2, Integer.parseInt(expireDate.split("/")[0]));
+			s.setInt(3, Integer.parseInt(expireDate.split("/")[1]));
+			s.setInt(4, idAccount);
+			s.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void createAccount(int idUser, String accountNumber) {
+		String sql = "Insert into account(accNum, money, IDClient) values(?, 0, ?)";
+		try(Connection conn = getConnection()){
+			PreparedStatement s = conn.prepareStatement(sql);
+			s.setString(1, accountNumber);
+			s.setInt(2, idUser);
+			s.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public boolean existAccountNumber(String accountNumber) {
+		String sql = "Select count(id) as count from account where accNum like ?";
+		try(Connection conn = getConnection()){
+			PreparedStatement s = conn.prepareStatement(sql);
+			s.setString(1, accountNumber);
+			ResultSet rs = s.executeQuery();
+				
+			rs.next();
+			if(rs.getInt("count")>0) {
+				return true;
+			}
+			return false;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

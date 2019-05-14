@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="366.0" prefWidth="237.0" style="-fx-background-color: rgba(0,0,0,0.5);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.InternetBankingController">
+   <children>
+      <Button layoutX="36.0" layoutY="263.0" mnemonicParsing="false" onAction="#createNewUser" prefHeight="29.0" prefWidth="165.0" style="-fx-background-color: rgba(0,0,0,0.8);;" text="Reset password" textFill="#eeeeee">
+         <font>
+            <Font name="Segoe UI" size="15.0" />
+         </font>
+      </Button>
+      <Label fx:id="clientName11" layoutX="12.0" layoutY="14.0" text="Internet Banking" textFill="#e9e9e9">
+         <font>
+            <Font name="Segoe UI Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label fx:id="clientName143" layoutX="13.0" layoutY="127.0" text="Login:" textFill="#e9e9e9">
+         <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="ib_login" layoutX="27.0" layoutY="146.0" text="Stephaaan" textFill="#e9e9e9">
+         <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="clientName1432" layoutX="13.0" layoutY="165.0" text="Status:" textFill="#e9e9e9">
+         <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="ib_status" layoutX="27.0" layoutY="184.0" text="Blocked" textFill="#da1111">
+         <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button layoutX="119.0" layoutY="179.0" mnemonicParsing="false" onAction="#createNewUser" prefHeight="29.0" prefWidth="98.0" style="-fx-background-color: rgba(0,0,0,0.8);;" text="Unblock" textFill="#eeeeee">
+         <font>
+            <Font name="Segoe UI" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="366.0" prefWidth="237.0" style="-fx-background-color: rgba(0,0,0,0.5);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controllers.AccountsController">
+   <children>
+      <Button layoutX="36.0" layoutY="263.0" mnemonicParsing="false" onAction="#createNewUser" prefHeight="29.0" prefWidth="165.0" style="-fx-background-color: rgba(0,0,0,0.8);;" text="New account" textFill="#eeeeee">
+         <font>
+            <Font name="Segoe UI" size="15.0" />
+         </font>
+      </Button>
+      <Label fx:id="clientName1" layoutX="60.0" layoutY="14.0" text="Accounts" textFill="#e9e9e9">
+         <font>
+            <Font name="Segoe UI Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label fx:id="clientName14" layoutX="14.0" layoutY="124.0" text="Number:" textFill="#e9e9e9">
+         <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="account_accountnumber" layoutX="27.0" layoutY="143.0" text="4405 7784 0139 0509" textFill="#e9e9e9">
+         <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="clientName142" layoutX="14.0" layoutY="162.0" text="Amount:" textFill="#e9e9e9">
+         <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="account_amount" layoutX="27.0" layoutY="188.0" text="0,01€" textFill="#e9e9e9">
+         <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+         </font>
+      </Label>
+      <ChoiceBox layoutX="18.0" layoutY="64.0" prefHeight="25.0" prefWidth="203.0" />
+   </children>
+</AnchorPane>
